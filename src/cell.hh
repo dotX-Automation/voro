@@ -214,13 +214,13 @@ class voronoicell_base {
 		 * corresponding to each face. By default, when no neighbor
 		 * information is available, the routine does nothing.
 		 * \param[in] fp the file handle to write to. */
-		virtual void output_neighbors(FILE *fp=stdout) {}
+		virtual void output_neighbors(FILE *fp=stdout) {(void)fp;}
 		/** This a virtual function that is overridden by a routine to
 		 * print the neighboring particle IDs for a given vertex. By
 		 * default, when no neighbor information is available, the
 		 * routine does nothing.
 		 * \param[in] i the vertex to consider. */
-		virtual void print_edges_neighbors(int i) {};
+		virtual void print_edges_neighbors(int i) {(void)i;}
 		/** This is a simple inline function for picking out the index
 		 * of the next edge counterclockwise at the current vertex.
 		 * \param[in] a the index of an edge of the current vertex.
@@ -344,6 +344,7 @@ class voronoicell : public voronoicell_base {
 		 * \return False if the plane cut deleted the cell entirely,
 		 *         true otherwise. */
 		inline bool nplane(double x,double y,double z,double rsq,int p_id) {
+			(void)p_id;
 			return nplane(*this,x,y,z,rsq,0);
 		}
 		/** Cuts a Voronoi cell using by the plane corresponding to the
@@ -354,6 +355,7 @@ class voronoicell : public voronoicell_base {
 		 * \return False if the plane cut deleted the cell entirely,
 		 *         true otherwise. */
 		inline bool nplane(double x,double y,double z,int p_id) {
+			(void)p_id;
 			double rsq=x*x+y*y+z*z;
 			return nplane(*this,x,y,z,rsq,0);
 		}
@@ -401,23 +403,23 @@ class voronoicell : public voronoicell_base {
 		}
 		void init_l_shape();
 	private:
-		inline void n_allocate(int i,int m) {};
-		inline void n_add_memory_vertices(int i) {};
-		inline void n_add_memory_vorder(int i) {};
-		inline void n_set_pointer(int p,int n) {};
-		inline void n_copy(int a,int b,int c,int d) {};
-		inline void n_set(int a,int b,int c) {};
-		inline void n_set_aux1(int k) {};
-		inline void n_copy_aux1(int a,int b) {};
-		inline void n_copy_aux1_shift(int a,int b) {};
-		inline void n_set_aux2_copy(int a,int b) {};
-		inline void n_copy_pointer(int a,int b) {};
-		inline void n_set_to_aux1(int j) {};
-		inline void n_set_to_aux2(int j) {};
-		inline void n_allocate_aux1(int i) {};
-		inline void n_switch_to_aux1(int i) {};
-		inline void n_copy_to_aux1(int i,int m) {};
-		inline void n_set_to_aux1_offset(int k,int m) {};
+		inline void n_allocate(int i,int m) {(void)i;(void)m;}
+		inline void n_add_memory_vertices(int i) {(void)i;};
+		inline void n_add_memory_vorder(int i) {(void)i;};
+		inline void n_set_pointer(int p,int n) {(void)p;(void)n;}
+		inline void n_copy(int a,int b,int c,int d) {(void)a;(void)b;(void)c;(void)d;};
+		inline void n_set(int a,int b,int c) {(void)a;(void)b;(void)c;};
+		inline void n_set_aux1(int k) {(void)k;};
+		inline void n_copy_aux1(int a,int b) {(void)a;(void)b;};
+		inline void n_copy_aux1_shift(int a,int b) {(void)a;(void)b;};
+		inline void n_set_aux2_copy(int a,int b) {(void)a;(void)b;};
+		inline void n_copy_pointer(int a,int b) {(void)a;(void)b;};
+		inline void n_set_to_aux1(int j) {(void)j;};
+		inline void n_set_to_aux2(int j) {(void)j;};
+		inline void n_allocate_aux1(int i) {(void)i;};
+		inline void n_switch_to_aux1(int i) {(void)i;};
+		inline void n_copy_to_aux1(int i,int m) {(void)i;(void)m;};
+		inline void n_set_to_aux1_offset(int k,int m) {(void)k;(void)m;};
 		inline void n_neighbors(std::vector<int> &v) {v.clear();};
 		friend class voronoicell_base;
 };

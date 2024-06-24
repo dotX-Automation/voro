@@ -123,6 +123,7 @@ class container_periodic_base : public unitcell, public voro_base {
 		 * removed the cell, true otherwise. */
 		template<class v_cell>
 		inline bool initialize_voronoicell(v_cell &c,int ijk,int q,int ci,int cj,int ck,int &i,int &j,int &k,double &x,double &y,double &z,int &disp) {
+			(void)ci;(void)cj;(void)ck;(void)disp;
 			c=unit_voro;
 			double *pp=p[ijk]+ps*q;
 			x=*(pp++);y=*(pp++);z=*pp;
@@ -141,6 +142,7 @@ class container_periodic_base : public unitcell, public voro_base {
 		 *		    find_voronoi_cell routine (but not needed
 		 *		    in this instance.) */
 		inline void initialize_search(int ci,int cj,int ck,int ijk,int &i,int &j,int &k,int &disp) {
+			(void)ci;(void)cj;(void)ck;(void)ijk;(void)disp;
 			i=nx;j=ey;k=ez;
 		}
 		/** Returns the position of a particle currently being computed
@@ -170,6 +172,7 @@ class container_periodic_base : public unitcell, public voro_base {
 		 * 		    (but not needed in this instance.)
 		 * \return The block index. */
 		inline int region_index(int ci,int cj,int ck,int ei,int ej,int ek,double &qx,double &qy,double &qz,int &disp) {
+			(void)qx;(void)qy;(void)qz;(void)disp;
 			int qi=ci+(ei-nx),qj=cj+(ej-ey),qk=ck+(ek-ez);
 			int iv(step_div(qi,nx));if(iv!=0) {qx=iv*bx;qi-=nx*iv;} else qx=0;
 			create_periodic_image(qi,qj,qk);

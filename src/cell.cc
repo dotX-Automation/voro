@@ -1516,6 +1516,7 @@ bool voronoicell_base::delete_connection(vc_class &vc,int j,int k,bool hand) {
  * search routine to fail. In the fall-back routine, we just test every edge to
  * find one straddling the plane. */
 bool voronoicell_base::failsafe_find(int &lp,int &ls,int &us,double &l,double &u) {
+	(void)lp;(void)ls;(void)us;(void)l;(void)u;
 	fputs("Bailed out of convex calculation (not supported yet)\n",stderr);
 	exit(1);
 /*	qw=1;lw=0;
@@ -2404,7 +2405,7 @@ bool voronoicell_base::plane_intersects_guess(double x,double y,double z,double 
  * \param[in] g the distance of up from the plane.
  * \return False if the plane does not intersect the plane, true if it does. */
 inline bool voronoicell_base::plane_intersects_track(double x,double y,double z,double rsq,double g) {
-
+	(void)rsq;(void)g;
 	for(int tp=0;tp<p;tp++) if(x*pts[tp<<2]+y*pts[(tp<<2)+1]+z*pts[(tp<<2)+2]>rsq) return true;
 	return false;
 /*
