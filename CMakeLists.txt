@@ -22,7 +22,7 @@ find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_ros REQUIRED)
 
 # voro library configuration
-file(GLOB_RECURSE VORO_HEADERS src/voro++.hh)
+file(GLOB_RECURSE VORO_HEADERS "src/*.hh")
 file(GLOB VORO_SOURCES src/*.cc)
 file(GLOB NOT_VORO_SOURCES src/v_base_wl.cc src/cmd_line.cc src/voro++.cc)
 list(REMOVE_ITEM VORO_SOURCES ${NOT_VORO_SOURCES})
